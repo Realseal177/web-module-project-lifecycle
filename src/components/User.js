@@ -2,7 +2,6 @@ import React from 'react';
 
 class User extends React.Component {
     render() {
-      console.log('User has fired');
       return(<div>
         <img src={this.props.gitImage} />
         <h3>{this.props.name}</h3>

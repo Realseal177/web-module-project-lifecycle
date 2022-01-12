@@ -2,10 +2,12 @@ import React from 'react';
 import axios from 'axios';
 
 import User from './components/User';
+import FollowerList from './components/FollowerList';
 
 class App extends React.Component {
   state = {
     name: '',
+    userName: '',
     gitImage: [],
     location: '',
     repos: '',
@@ -13,10 +15,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount() has fired');
     axios.get('https://api.github.com/users/realseal177')
       .then(resp => {
-        console.log(resp.data);
         this.setState({
           ...this.state,
           name: resp.data.name,
@@ -24,19 +24,19 @@ class App extends React.Component {
           location: resp.data.location,
           repos: resp.data.public_repos,
           followers: resp.data.followers,
+          userName: resp.data.login,
         })
       }).catch(err => {
         console.error(err)
-      }).finally(console.log("It's working!!! It's wooorrrking!!!"))
+      })
   }
 
   render() {
-    console.log('App is rendering');
     return(<div>
       <h1>GITHUB INFO</h1>
 
       <form>
-        <h2>GitHub Handle</h2>
+        <h2>{this.state.userName}</h2>
         <input type='text' placeholder='Search'/>
         <button>Search People</button>
       </form>
@@ -45,10 +45,7 @@ class App extends React.Component {
 
       <h2>FOLLOWERS:</h2>
 
-      <div>
-        <img src='https://avatars.githubusercontent.com/u/38574400?v=4' />
-        <p>*follower name*</p>
-      </div>
+      <FollowerList />
 
     </div>);
   }
