@@ -22,7 +22,7 @@ class FollowerList extends React.Component {
   }
   render() {
     return (
-      <>
+      <div className="follower-div">
         {this.state.myFollowers.map((follower) => (
           <Follower
             key={follower.id}
@@ -30,7 +30,7 @@ class FollowerList extends React.Component {
             login={follower.login}
           />
         ))}
-      </>
+      </div>
     );
   }
 }
