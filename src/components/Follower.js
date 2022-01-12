@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 
 class Follower extends React.Component {
-    render() {
-      return (<div>
-        <img width='300px' src={this.props.avatar_url} />
+  render() {
+    return (
+      <div>
+        <img width="300px" src={this.props.avatar_url} />
         <p>{this.props.login}</p>
-      </div>);
-    }
+      </div>
+    );
   }
+}
 
-  export default Follower;
+export default Follower;
